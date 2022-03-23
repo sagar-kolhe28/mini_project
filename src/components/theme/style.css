@@ -1,0 +1,40 @@
+.signup-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
+
+.main_div {
+  align-content: center;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+nav {
+  height: 50px;
+  border: 1px solid #dfdfdf;
+}
+
+.div-header {
+  width: 80%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.div-svg {
+  height: 30px;
+  width: 30px;
+  padding: 0 20px;
+}
+
+.links-to {
+  align-items: flex-end;
+} /* .button-header {
+ 
+ } */ ;
