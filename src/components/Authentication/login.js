@@ -35,7 +35,7 @@ function LogIn({ history }) {
       )
       .then((response) => {
         if (response.data.length > 0) {
-          history.push({ pathname: '/' });
+          history.push({ pathname: '/Dashboard' });
         } else {
           // eslint-disable-next-line no-alert
           alert('Incorrect Phone Number or Password');

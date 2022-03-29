@@ -3,7 +3,7 @@ import '../theme/style.css';
 
 function Footer() {
   return (
-    <div className="footer">
+    <div>
       <footer className="bg-light text-center text-lg-start">
         <div className="text-center p-3">
           © 2022 Copyright:

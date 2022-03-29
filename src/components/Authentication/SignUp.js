@@ -50,7 +50,6 @@ function SignUp({ history }) {
         <h1 className="heading">SignIn</h1>
 
         <div className="mb-3">
-          {/* <label htmlFor="first_name"> First Name </label> */}
           <input
             type="text"
             placeholder="First Name"
@@ -63,7 +62,6 @@ function SignUp({ history }) {
           />
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="last_name"> Last Name </label> */}
           <input
             type="text"
             placeholder="Last Name"
@@ -76,7 +74,6 @@ function SignUp({ history }) {
           />
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="email"> Email </label> */}
           <input
             type="email"
             placeholder="Email"
@@ -92,7 +89,6 @@ function SignUp({ history }) {
           />
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="phone_no"> Phone Number </label> */}
           <input
             type="tel"
             placeholder="Phone Number"
@@ -106,7 +102,6 @@ function SignUp({ history }) {
           />
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="password"> Password </label> */}
           <input
             type="password"
             placeholder="Password"

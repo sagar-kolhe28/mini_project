@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './theme/style.css';
-import UploadAndDisplayImage from './theme/UploadImg';
+import apiClient from './Intercetor/Interceptor';
+//  import UploadAndDisplayImage from './theme/UploadImg';
 
-function AddingMovie() {
+function UpdateMovieDetails({ history }) {
   const [Data, setData] = useState({
-    movie_name: '',
-    genre: '',
+    MovieName: '',
+    Genre: '',
     Director: '',
-    cast: '',
+    Cast: '',
   });
   const [records, setRecords] = useState([]);
-  const handdleInput = (e) => {
-    const InputData = e.target.name;
-    const {value} = e.target;
+
+  const handdleInput = (event) => {
+    const InputData = event.target.name;
+    const { value } = event.target;
 
     setData({ ...Data, [InputData]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    apiClient
+      .post(`MovieDetails?MovieName=eq.`)
+      .then((response) => {
+        console.log(response);
+        history.push({ pathname: '/Dashboard' });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     const newData = {
       ...Data,
       id: new Date().getTime().toString(),
@@ -29,77 +43,66 @@ function AddingMovie() {
   return (
     <div className="main_div">
       <form className="signup-form" action="" onSubmit={handleSubmit}>
-        <h1 className="heading">Create Record</h1>
+        <h1 className="heading">Update Movie Details</h1>
 
         <div className="mb-3">
-          {/* <label htmlFor="phone_number"> </label> */}
-
           <input
             type="text"
             placeholder="Enter Movie Name"
             className="form-control"
-            value={Data.movie_name}
-            onChange={handdleInput}
-            name="movie_name"
-            id="movie_name"
+            value={Data.MovieName}
+            onChange={(event) => handdleInput(event)}
+            name="MovieName"
+            id="MovieName"
           />
         </div>
         <div className="mb-3">
           Genre:
           <select
-            id="genre"
-            name="genre"
-            onChange={handdleInput}
-            value={Data.genre}
+            id="Genre"
+            name="Genre"
+            onChange={(event) => handdleInput(event)}
+            value={Data.Genre}
           >
             <option value="Action">Action</option>
             <option value="Thriller">Thriller</option>
+            <option value="Animation">Animation</option>
             <option value="Drama">Drama</option>
             <option value="Comedy">Comedy</option>
           </select>
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="password"> </label> */}
           <input
             type="text"
             placeholder="Enter Director Name"
             className="form-control"
             value={Data.Director}
-            onChange={handdleInput}
+            onChange={(event) => handdleInput(event)}
             name="Director"
             id="Director"
           />
         </div>
         <div className="mb-3">
-          {/* <label htmlFor="password"> </label> */}
           <input
             type="text"
             placeholder="Enter Artist Names"
             className="form-control"
-            value={Data.cast}
-            onChange={handdleInput}
-            name="cast"
-            id="cast"
+            value={Data.Cast}
+            onChange={(event) => handdleInput(event)}
+            name="Cast"
+            id="Cast"
           />
         </div>
-        <UploadAndDisplayImage />
+        {/* <UploadAndDisplayImage /> */}
         <button className="btn-lg btn-dark btn-block" type="submit">
-          Add
+          Update
         </button>
       </form>
-
-      {records.map((currentRecord) => {
-        const { PhoneNo, Password } = currentRecord;
-        console.log(currentRecord);
-        return (
-          <div className="showData" key={currentRecord.id}>
-            <p>{PhoneNo}</p>
-            <p>{Password}</p>
-          </div>
-        );
-      })}
     </div>
   );
 }
 
-export default AddingMovie;
+UpdateMovieDetails.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+};
+export default UpdateMovieDetails;
